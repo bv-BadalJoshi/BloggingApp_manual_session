@@ -1,0 +1,14 @@
+<h1> Article Details </h1>
+
+<p><strong>Title: </strong><br><%= @article.title %></p>
+<p><strong>Article Description : </strong><br><%= @article.description %></p>
+<table>
+	<tr>
+		<td><%= link_to 'Edit ', edit_article_path(@article) %></td>
+		<td><%= link_to 'Delete ', article_path(@article), method: :delete %></td>
+		<td><%= link_to 'All Articles ', articles_path %></td>
+	</tr>
+</table>
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
