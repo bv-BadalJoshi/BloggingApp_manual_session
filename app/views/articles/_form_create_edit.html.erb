@@ -1,25 +1,27 @@
 <% if @article.errors.any? %>
-	<h2>The following errors prevented to save your article</h2>
-	<ul>
-		<% @article.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-	</ul>
+	<div class="alert alert-danger" role="alert">
+		<h4 class="alert-heading">It seems you did a mistake!!</h4>
+		<ul>
+			<% @article.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
 
 <%= form_with(model: @article, local: true) do |form| %>
-	<p>
+	<div class="form-group col-sm-10">
 		<%= form.label :title %><br>
-		<%= form.text_field :title %>
-	</p>
+		<%= form.text_field :title, class: "form-control"%>
+	</div>
 
-	<p>
+	<div class="form-group col-sm-10">
 	  <%= form.label :description, 'Article Description' %><br>
-		<%= form.text_field :description %>
-	</p>
+		<%= form.text_field :description, class: "form-control" %>
+	</div>
 
 	<p>
-		<%= form.submit %>
+		<%= form.submit class: "btn btn-primary ml-3"%>
 	</p>
 <% end %>
 

@@ -1,25 +1,19 @@
-<h1> Articles Listing </h1>
-<table>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Article</th>
-			<th>Author</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
+<h1 class="text-center"> Articles Listing </h1>
 
-	<tbody>
-		<% @articles.each do |article| %>
-		<tr>
-			<td><%= article.title %></td>
-			<td><%= article.description %></td>
-			<td><%= article.user.username %></td>
-			<td><%= link_to 'Show', article_path(article) %></td>
-			<td><%= link_to 'Edit', edit_article_path(article) %></td>
-			<td><%= link_to 'Delete', article_path(article), method: :delete %></td>
-		</tr>
-	<% end %>
-	</tbody>
-</table>
-<p><%= link_to 'Create new Article', new_article_path %></p>
+<% @articles.each do |article| %>
+	<div class="card_size"> 
+		<div class="card">
+			<div class="card-header">By- 
+    		<%= article.user.username %>
+  		</div>
+  		<div class="card-body">
+				<h5 class="card-title"><%= article.title %></h5>
+				<p class="card-text"><%= truncate(article.description, length: 60) %></p>
+				<%= link_to 'Show', article_path(article), class: "btn btn-success" %>
+				<%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary ml-1" %>
+				<%= link_to 'Delete', article_path(article), method: :delete, class: "btn btn-danger ml-1" %>
+			</div>
+		</div>
+	</div>
+<% end %>	
+<p class="mt-5"><%= link_to 'Create new Article', new_article_path, class: "btn btn-success" %></p>
