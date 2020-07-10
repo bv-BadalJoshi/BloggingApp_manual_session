@@ -1,0 +1,3 @@
+<h1 class = "text-center mt-5 text-success">Welcome: <%= @user.username %></h1>
+<% @articles = @user.articles %>
+<%= render "articles/all_articles" %>

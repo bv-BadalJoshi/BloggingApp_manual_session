@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		if @article.update()
+		if @article.update(filter_param)
 		  flash[:notice] = "Article was updated successfully"
 			redirect_to article_path(@article)
 		else
