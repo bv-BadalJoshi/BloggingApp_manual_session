@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	def new
 		@user=User.new
 	end
-	
+
 	def show					#to display the logged in user page
 		@user=User.find(params[:id])
 	end
