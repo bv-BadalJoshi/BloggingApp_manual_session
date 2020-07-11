@@ -1,3 +1,8 @@
+<% flash.each do |f| %>
+	<div class="alert alert-success" role="alert">
+  	<%= f %>
+	</div>
+<% end %>
 <h1 class="text-center"> Article Details </h1>
 <div class="jumbotron">
 	<h1 class="display-4"><%= @article.title %></h1>
@@ -11,6 +16,4 @@
 		</p>
 	<% end %>
 </div>
-<% if flash[:notice] %>
-	<%= flash[:notice] %>
-<% end %>
+

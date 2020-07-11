@@ -7,7 +7,14 @@ class ApplicationController < ActionController::Base
 	end
 
 	def logged_in
-		return true if @current_user
-		return false
+		is_logged = !!User.find(session[:user_id]) if session[:user_id];
+		return !!is_logged
+	end
+
+	def is_logged
+		if !logged_in
+			flash[:alert] = "Hey there You need to login first"
+			redirect_to login_path
+		end
 	end
 end
