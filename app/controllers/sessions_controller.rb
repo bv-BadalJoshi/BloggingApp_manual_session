@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-	def new
+class SessionsController < ApplicationController   #for verifying and serving the loggedin page to user
+	def new						       
 		@session = User.new
 	end
 
