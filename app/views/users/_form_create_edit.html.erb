@@ -1,15 +1,13 @@
-<% if @user.errors.any? %>
-	<div class="alert alert-danger" role="alert">
-		<h4 class="alert-heading">It seems you did a mistake!!</h4>
-		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
+<% if flash[:alert] %>
+	<ul>
+		<div class="alert alert-danger" role="alert">
+			<% flash[:alert].each do |msg| %>	
 				<li><%= msg %></li>
 			<% end %>
-		</ul>
-	</div>
+		</div>
+	</ul>
 <% end %>
-
-<%= form_with(model: @user, local: true) do |form| %>
+<%= form_with scope: :user,url: users_path, local: true do |form| %>
 	<div class="form-group col-sm-10">
 		<%= form.label :username %><br>
 		<%= form.text_field :username, class: "form-control"%>

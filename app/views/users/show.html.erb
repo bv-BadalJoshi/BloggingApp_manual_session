@@ -1,9 +1,5 @@
-<% if logged_in && @user.id == current_user.id %>
-	<h1 class = "text-center mt-5 text-success">Welcome: <%= @user.username %></h1>
-	<% @articles = @user.articles %>
-	<%= render "articles/all_articles" %>
-<% else %>
-	<div class="alert alert-warning" role="alert">
-  	Sorry this Id does not belong to you!!
-	</div>
-<% end %>
+<h1 class = "text-center mt-5 text-success">Welcome: <%= @user.username %></h1>
+<% @articles = @user.articles %>
+<%= render "articles/all_articles" %>
+
+
