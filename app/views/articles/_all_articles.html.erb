@@ -1,3 +1,9 @@
+<% if flash[:alert] %>
+	<ul>
+		<div class="alert alert-danger" role="alert">
+			<%= flash[:alert] %>
+		</div>
+<% end %>
 <h1 class="text-center">Articles Listing </h1>  
 <% @articles.each do |article| %>
 	<div class="card_size">
@@ -9,7 +15,7 @@
 				<h5 class="card-title"><%= article.title %></h5>
 				<p class="card-text"><%= truncate(article.description, length: 60) %></p>
 				<%= link_to 'Show', article_path(article), class: "btn btn-success" %>
-				<% if logged_in && article.user == current_user %>
+				<% if !!current_user && article.user == current_user %>
 					<%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary ml-1" %>
 					<%= link_to 'Delete', article_path(article), method: :delete, class: "btn btn-danger ml-1" %>
 				<% end %>

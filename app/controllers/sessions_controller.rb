@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController   #for verifying and serving the loggedin page to user
 	def new						       
-		@session = User.new
 	end
 
 	def create
@@ -19,4 +18,5 @@ class SessionsController < ApplicationController   #for verifying and serving th
 		flash[:notice] = "You have been logged out of the window"
 		redirect_to root_path
 	end
+
 end

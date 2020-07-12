@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
+	skip_before_action :is_logged, only: [:show]
 	before_action :fetch_article, only: [:show, :edit, :update, :destroy]
-	before_action :is_logged, only: [:update, :edit, :destroy]
 	before_action :user_privilezed, only: [:update, :edit, :destroy]
+
 	def show
 	end
 
@@ -52,7 +53,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def user_privilezed
-		if @article.user != User.find(session[:user_id])
+		if @article.user != current_user
 			flash[:alert] = "You don't have the authorities to access the page"
 			redirect_to @article
 		end
