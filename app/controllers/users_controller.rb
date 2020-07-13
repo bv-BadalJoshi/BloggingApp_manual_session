@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_privilezed
-		if @user != current_user
+		if !current_user.admin && @user != current_user
 			flash[:alert] = "You don't have the authorities to access the page"
 			redirect_to articles_path
 		end
