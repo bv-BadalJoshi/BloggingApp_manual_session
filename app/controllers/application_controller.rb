@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
 			redirect_to login_path
 		end
 	end
+
+	def current_admin
+		@cur_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
+	end
+
+	def is_admin_logged
+		if !(!!current_admin)
+			flash[:alert] = "Please login first"
+			redirect_to new_admin_path
+		end
+	end
+
 end
